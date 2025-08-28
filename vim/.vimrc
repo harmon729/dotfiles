@@ -1,10 +1,9 @@
-" Set nocompatible mode. This must be the first line.
-set nocompatible
-
-
 " -----------------------------------------------------------------------------
 " # Startup & Health Checks
 " -----------------------------------------------------------------------------
+
+" Set nocompatible mode. This must be the first line.
+set nocompatible
 
 function! s:check_dependencies()
   " A dictionary of required command-line tools.
@@ -86,7 +85,7 @@ call plug#end()
 
 
 " -------------------
-" 
+" # General Settings
 " -------------------
 
 " Enable filetype detection, plugins, and indentation.
