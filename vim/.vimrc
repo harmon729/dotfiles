@@ -103,6 +103,7 @@ set noerrorbells        " Disable audible bell
 set visualbell t_vb=    " Use visual bell instead
 set autochdir           " Automatically change directory to the current file's dir
 set nofoldenable        " Disable code folding by default
+set clipboard=unnamed   " Use OS clipboard
 
 " Set persistent undo history
 set undofile
@@ -208,8 +209,20 @@ nnoremap <leader>w :w<CR>
 " Clear search highlighting
 nnoremap <silent> <leader><CR> :nohlsearch<CR>
 
-" Toggle relative line numbering
-nnoremap <C-n> :set relativenumber!<CR>
+" Toggle Line Number between relative, absolute and none by <C-n>
+function s:LineNumberToggler()
+    if (&number && &relativenumber)
+        set number
+        set norelativenumber
+    elseif (&number && !&relativenumber)
+        set nonumber
+        set norelativenumber
+    else
+        set number
+        set relativenumber
+    endif
+endfunction
+nnoremap <silent> <C-n> :call <SID>LineNumberToggler()<CR>
 
 " Remap ESC in insert mode for faster exit
 inoremap jk <Esc>
