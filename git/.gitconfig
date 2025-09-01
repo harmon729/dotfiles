@@ -1,0 +1,14 @@
+[init]
+	defaultBranch = main
+[user]
+	email = xhx1719@gmail.com
+	name = Harmon Hsu
+[core]
+	editor = vim
+	excludesfile = /home/devcontainers/.gitignore_global
+[alias]
+    graph = log --all --graph --decorate --oneline
+[credential]
+	helper = store
+[fetch]
+	prune = true
