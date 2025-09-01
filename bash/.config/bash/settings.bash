@@ -1,0 +1,37 @@
+#!/usr/bin/env bash
+
+# history
+HISTCONTROL=ignoreboth # don't put duplicate lines or lines starting with space in the history.  
+shopt -s histappend # append to the history file, don't overwrite it
+HISTSIZE=32768
+HISTFILESIZE=$HISTSIZE
+
+# check the window size after each command and, if necessary,
+# update the values of LINES and COLUMNS.
+shopt -s checkwinsize
+
+# If set, the pattern "**" used in a pathname expansion context will
+# match all files and zero or more directories and subdirectories.
+shopt -s globstar
+
+# make less more friendly for non-text input files, see lesspipe(1)
+[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
+
+# enable programmable completion features (you don't need to enable
+# this, if it's already enabled in /etc/bash.bashrc and /etc/profile
+# sources /etc/bash.bashrc).
+if ! shopt -oq posix; then
+  if [ -f /usr/share/bash-completion/bash_completion ]; then
+    . /usr/share/bash-completion/bash_completion
+  elif [ -f /etc/bash_completion ]; then
+    . /etc/bash_completion
+  fi
+fi
+
+# 获取 Host IP
+WINDOWS_IP=$(ip route | grep default | awk '{print $3}')
+PROXY_HTTP="http://${WINDOWS_IP}:7897"
+
+# 设置环境变量
+export http_proxy="${PROXY_HTTP}"
+export https_proxy="${PROXY_HTTP}"
