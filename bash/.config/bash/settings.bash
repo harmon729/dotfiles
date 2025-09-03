@@ -27,11 +27,3 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
-
-# 获取 Host IP
-WINDOWS_IP=$(ip route | grep default | awk '{print $3}')
-PROXY_HTTP="http://${WINDOWS_IP}:7897"
-
-# 设置环境变量
-export http_proxy="${PROXY_HTTP}"
-export https_proxy="${PROXY_HTTP}"
