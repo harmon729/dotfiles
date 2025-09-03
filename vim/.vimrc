@@ -78,6 +78,7 @@ Plug 'haya14busa/incsearch-easymotion.vim'
 Plug 'tpope/vim-fugitive'
 
 " Syntax, Linting, and Formatting
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'dense-analysis/ale' " Asynchronous Lint Engine
 Plug 'preservim/vim-markdown'
 
