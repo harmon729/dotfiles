@@ -3,7 +3,7 @@
 # extension config: zoxide 0412
 eval "$(zoxide init bash)"
 
-source ~/.local/share/blesh/ble.sh
+# source ~/.local/share/blesh/ble.sh
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!

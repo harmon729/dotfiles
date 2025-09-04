@@ -2,6 +2,8 @@
 
 [[ $- = *i* ]] || return
 
+source -- "${HOME}/.local/share/blesh/ble.sh" --attach=none
+
 BASH_MODULES_DIR="$HOME/.config/bash"
 
 # Functions
@@ -69,3 +71,5 @@ fi
 #     # shellcheck source=./.config/bash/.shell_private
 #     source "$BASH_MODULES_DIR/.shell_private"
 # fi
+
+[[ ! ${BLE_VERSION-} ]] || ble-attach
