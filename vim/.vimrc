@@ -81,6 +81,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'dense-analysis/ale' " Asynchronous Lint Engine
 Plug 'preservim/vim-markdown'
+Plug 'puremourning/vimspector'
 
 call plug#end()
 
@@ -379,6 +380,39 @@ set tags^=.git/tags;~
 
 " --- CtrlP mapping (needs to be after plugin loaded) ---
 nnoremap ; :CtrlPBuffer<CR>
+
+
+" --- Vimspector 快捷键映射 (无 F 键版本) ---
+" 使用 <Plug> 映射是官方推荐的方式，可以防止与其他插件冲突或在未来版本中失效。
+" 'nmap' 表示这些快捷键在 Normal (普通) 模式下生效。
+
+" 启动与停止
+" <leader>ll : Debug Launch (启动调试)
+nmap <leader>ll <Plug>VimspectorLaunch
+" <leader>lr : Debug Reset (停止调试)
+nmap <leader>lr <Plug>VimspectorReset
+" <leader>lR : Debug Restart (重启调试)
+nmap <leader>lR <Plug>VimspectorRestart
+
+" 断点控制 (b for breakpoint)
+" <leader>lb : Debug Breakpoint (切换断点)
+nmap <leader>lb <Plug>VimspectorToggleBreakpoint
+" <leader>lB : Debug conditional Breakpoint (切换条件断点)
+nmap <leader>lB <Plug>VimspectorToggleConditionalBreakpoint
+
+" 调试流程控制
+" <leader>lc : Debug Continue (继续执行)
+nmap <leader>lc <Plug>VimspectorContinue
+" <leader>lo : Debug step Over (单步跳过)
+nmap <leader>lo <Plug>VimspectorStepOver
+" <leader>li : Debug step Into (单步进入)
+nmap <leader>li <Plug>VimspectorStepInto
+" <leader>lu : Debug step Up/Out (单步跳出)
+nmap <leader>lu <Plug>VimspectorStepOut
+
+" 其他常用功能
+" <Leader>le : Debug Evaluate (在光标处评估表达式)
+nmap <leader>le <Plug>VimspectorRunToCursor
 
 
 " ------------------------------------
