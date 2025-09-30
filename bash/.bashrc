@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 # ~/.bashrc
 
 [[ $- = *i* ]] || return
@@ -7,21 +8,21 @@ source -- "${HOME}/.local/share/blesh/ble.sh" --attach=none
 BASH_MODULES_DIR="$HOME/.config/bash"
 
 # Functions
-if [[ -f "$BASH_MODULES_DIR/functions.bash" && -r "$BASH_MODULES_DIR/functions.bash" ]] ; then
-    # shellcheck source=./.config/bash/functions.bash
-    source "$BASH_MODULES_DIR/functions.bash"
+if [[ -f "$BASH_MODULES_DIR/functions.bash" && -r "$BASH_MODULES_DIR/functions.bash" ]]; then
+  # shellcheck source=./.config/bash/functions.bash
+  source "$BASH_MODULES_DIR/functions.bash"
 fi
 
 # Allow local customizations in the ~/.bashrc_local_before file
-if [[ -f "$BASH_MODULES_DIR/.bashrc_local" && -r "$BASH_MODULES_DIR/.bashrc_local" ]] ; then
-    # shellcheck source=./.config/bash/.bashrc_local
-    source "$BASH_MODULES_DIR/.bashrc_local"
+if [[ -f "$BASH_MODULES_DIR/.bashrc_local" && -r "$BASH_MODULES_DIR/.bashrc_local" ]]; then
+  # shellcheck source=./.config/bash/.bashrc_local
+  source "$BASH_MODULES_DIR/.bashrc_local"
 fi
 
 # Settings
-if [[ -f "$BASH_MODULES_DIR/settings.bash" && -r "$BASH_MODULES_DIR/settings.bash" ]] ; then
-    # shellcheck source=./.config/bash/settings.bash
-    source "$BASH_MODULES_DIR/settings.bash"
+if [[ -f "$BASH_MODULES_DIR/settings.bash" && -r "$BASH_MODULES_DIR/settings.bash" ]]; then
+  # shellcheck source=./.config/bash/settings.bash
+  source "$BASH_MODULES_DIR/settings.bash"
 fi
 
 # # Bootstrap
@@ -37,21 +38,21 @@ fi
 # fi
 
 # Aliases
-if [[ -f "$BASH_MODULES_DIR/aliases.bash" && -r "$BASH_MODULES_DIR/aliases.bash" ]] ; then
-    # shellcheck source=./.config/bash/aliases.bash
-    source "$BASH_MODULES_DIR/aliases.bash"
+if [[ -f "$BASH_MODULES_DIR/aliases.bash" && -r "$BASH_MODULES_DIR/aliases.bash" ]]; then
+  # shellcheck source=./.config/bash/aliases.bash
+  source "$BASH_MODULES_DIR/aliases.bash"
 fi
 
 # Custom prompt
-if [[ -f "$BASH_MODULES_DIR/prompt.bash" && -r "$BASH_MODULES_DIR/prompt.bash" ]] ; then
-    # shellcheck source=./.config/bash/prompt.bash
-    source "$BASH_MODULES_DIR/prompt.bash"
+if [[ -f "$BASH_MODULES_DIR/prompt.bash" && -r "$BASH_MODULES_DIR/prompt.bash" ]]; then
+  # shellcheck source=./.config/bash/prompt.bash
+  source "$BASH_MODULES_DIR/prompt.bash"
 fi
 
 # Plugins
-if [[ -f "$BASH_MODULES_DIR/plugins.bash" && -r "$BASH_MODULES_DIR/plugins.bash" ]] ; then
-    # shellcheck source=./.config/bash/plugins.bash
-    source "$BASH_MODULES_DIR/plugins.bash"
+if [[ -f "$BASH_MODULES_DIR/plugins.bash" && -r "$BASH_MODULES_DIR/plugins.bash" ]]; then
+  # shellcheck source=./.config/bash/plugins.bash
+  source "$BASH_MODULES_DIR/plugins.bash"
 fi
 
 # # Allow local customizations in the ~/.shell_local_after file
