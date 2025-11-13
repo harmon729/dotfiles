@@ -1,6 +1,15 @@
 #!/usr/bin/env bash
-# blerc
+# ble.sh (Bash Line Editor) Configuration Template
+# Copy this file to ~/.blerc and customize it for your platform
+#
+# Installation:
+#   cp ~/dotfiles/bash/.blerc ~/.blerc
 
-if grep -iE "/proc/version" "(microsoft|wsl)" &> /dev/null ; then
-    ble/path#remove-glob PATH '/mnt/*'
-fi
+# OPTIONAL: WSL-specific configuration
+# Uncomment the following if you're using WSL and want to remove Windows paths:
+# if grep -qiE "(microsoft|wsl)" /proc/version 2>/dev/null; then
+#     ble/path#remove-glob PATH '/mnt/*'
+# fi
+
+# Add your custom ble.sh configurations here
+# See: https://github.com/akinomyoga/ble.sh
