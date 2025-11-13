@@ -1,3 +1,8 @@
+# Starship Prompt Configuration
+# This is a universal configuration for the starship cross-shell prompt
+# Installation: symlink this file to ~/.config/starship.toml
+# See: https://starship.rs/config/
+
 "$schema" = 'https://starship.rs/config-schema.json'
 
 format = """

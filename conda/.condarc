@@ -1,12 +1,29 @@
+# Conda Configuration Template
+# Copy this file to ~/.condarc and customize it for your region
+#
+# Installation:
+#   cp ~/dotfiles/conda/.condarc ~/.condarc
+#
+# This template uses default conda channels. For better performance in China,
+# consider using mirrors like USTC or Tsinghua.
+
 channels:
   - conda-forge
   - defaults
+
 show_channel_urls: true
 channel_priority: strict
-default_channels:
-  - https://mirrors.ustc.edu.cn/anaconda/pkgs/main
-  - https://mirrors.ustc.edu.cn/anaconda/pkgs/r
-  - https://mirrors.ustc.edu.cn/anaconda/pkgs/msys2
-custom_channels:
-  conda-forge: https://mirrors.ustc.edu.cn/anaconda/cloud
-  bioconda: https://mirrors.ustc.edu.cn/anaconda/cloud
+
+# OPTIONAL: For users in China, uncomment and use these mirror settings:
+# default_channels:
+#   - https://mirrors.ustc.edu.cn/anaconda/pkgs/main
+#   - https://mirrors.ustc.edu.cn/anaconda/pkgs/r
+#   - https://mirrors.ustc.edu.cn/anaconda/pkgs/msys2
+# custom_channels:
+#   conda-forge: https://mirrors.ustc.edu.cn/anaconda/cloud
+#   bioconda: https://mirrors.ustc.edu.cn/anaconda/cloud
+
+# OPTIONAL: For users in other regions, you can use other mirrors:
+# - Tsinghua (China): https://mirrors.tuna.tsinghua.edu.cn/anaconda/
+# - BFSU (China): https://mirrors.bfsu.edu.cn/anaconda/
+# - Or use the default channels (remove the custom_channels section)

@@ -1,14 +1,50 @@
+# Git Configuration Template
+# Copy this file to ~/.gitconfig and customize it with your personal information
+# 
+# Installation:
+#   cp ~/dotfiles/git/.gitconfig ~/.gitconfig
+#   git config --global user.name "Your Name"
+#   git config --global user.email "your.email@example.com"
+#   git config --global core.excludesfile ~/.gitignore_global
+
 [init]
 	defaultBranch = main
+
 [user]
-	email = xhx1719@gmail.com
-	name = Harmon Hsu
+	# CUSTOMIZE: Replace with your name and email
+	# name = Your Name
+	# email = your.email@example.com
+
 [core]
 	editor = vim
-	excludesfile = /home/devcontainers/.gitignore_global
+	# CUSTOMIZE: Update path to your global gitignore file
+	# excludesfile = ~/.gitignore_global
+
 [alias]
-    graph = log --all --graph --decorate --oneline
+	# Useful aliases
+	graph = log --all --graph --decorate --oneline
+	st = status
+	co = checkout
+	br = branch
+	ci = commit
+	unstage = reset HEAD --
+
 [credential]
 	helper = store
+
 [fetch]
 	prune = true
+
+[pull]
+	rebase = false
+
+[push]
+	default = simple
+
+# Uncomment and customize based on your needs:
+# [color]
+# 	ui = auto
+# [diff]
+# 	tool = vimdiff
+# [merge]
+# 	tool = vimdiff
