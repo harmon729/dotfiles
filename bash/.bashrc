@@ -49,10 +49,22 @@ if [[ -f "$BASH_MODULES_DIR/prompt.bash" && -r "$BASH_MODULES_DIR/prompt.bash" ]
   source "$BASH_MODULES_DIR/prompt.bash"
 fi
 
+# Path
+if [[ -f "$BASH_MODULES_DIR/path.bash" && -r "$BASH_MODULES_DIR/path.bash" ]]; then
+  # shellcheck source=./.config/bash/path.bash
+  source "$BASH_MODULES_DIR/path.bash"
+fi
+
 # Plugins
 if [[ -f "$BASH_MODULES_DIR/plugins.bash" && -r "$BASH_MODULES_DIR/plugins.bash" ]]; then
   # shellcheck source=./.config/bash/plugins.bash
   source "$BASH_MODULES_DIR/plugins.bash"
+fi
+
+# Exports
+if [[ -f "$BASH_MODULES_DIR/exports.bash" && -r "$BASH_MODULES_DIR/exports.bash" ]]; then
+  # shellcheck source=./.config/bash/exports.bash
+  source "$BASH_MODULES_DIR/exports.bash"
 fi
 
 # # Allow local customizations in the ~/.shell_local_after file
