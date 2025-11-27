@@ -108,7 +108,7 @@ return {
   },
   config = function()
     local dap = require("dap")
-    local dapui = require("dapui")
+    -- local dapui = require("dapui")
 
     -- 定义 C++ 的调试配置模板
     dap.configurations.cpp = {
