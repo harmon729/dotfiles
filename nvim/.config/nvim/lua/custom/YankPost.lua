@@ -3,7 +3,7 @@ local M = {}
 --- 将最新的 Tmux 缓冲区内容写入临时文件进行测试
 M.sync_to_file = function()
   -- 1. 定义临时文件的路径
-  local temp_file = "~/yank.buf"
+  local temp_file = vim.fn.expand("~/yank.buf")
 
   -- 2. 获取 Tmux 缓冲区的内容
   -- 使用 vim.fn.system() 同步执行 shell 命令
