@@ -120,7 +120,7 @@ return {
           return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
         end,
         cwd = "${workspaceFolder}",
-        stopOnEntry = false,
+        stopOnEntry = true,
         -- 如果你需要传递命令行参数
         -- args = {"arg1", "arg2"},
       },
