@@ -1,7 +1,10 @@
-# feat: ✨
-# fix: 🛠️
-# docs: 📖
-# style: 🎨
-# refactor: ♻️
-# test: 🧪
-# chore: 🧹
+# feat(scope): ✨
+# fix(scope): 🛠️
+# docs(scope): 📖
+# style(scope): 🎨
+# refactor(scope): ♻️
+# perf(scope): ⚡
+# test(scope): 🧪
+# chore(scope): 🧹
+# ci(scope): 📦
+# revert(scope): ⏪

@@ -1,59 +1,53 @@
-[init]
-  defaultBranch = main
 [user]
   name = Harmon Hsu
   email = xhx1719@gmail.com
   signingkey = ~/.ssh/id_ed25519_git.pub
 [gpg]
   format = ssh
+[commit]
+  template = ~/.config/git/commitmsg.txt
+  verbose = true
+  gpgsign = true
+[tag]
+  sort = -taggerdate
+  gpgsign = true
+
 [core]
-  compression = 9
-  whitespace = blank-at-eol,space-before-tab,tab-in-indent,blank-at-eof,cr-at-eol
-  preloadindex = true
-  editor = nvim
-  ui = true
+  autocrlf = input
   excludesfile = ~/.gitignore_global
+  fscache = true
 [apply]
-  whitespace = error
+  whitespace = fix
+
+[init]
+  defaultBranch = main
+
 [alias]
   graph = log --all --graph \
     --pretty=format:'%C(auto)%h%C(reset) %C(bold blue)%an%C(reset) %C(magenta)%ar%C(reset) %C(auto)%D%C(reset)%n%s%n'
   inc = add --patch
-[status]
-  branch = true
-  showStash = true
-  showUntrackedFiles = all
-[diff]
-  context = 3
-  renames = copies
-  interHunkContext = 10
-[commit]
-  template = ~/.config/git/commitmsg.txt
-  gpgsign = true
+
 [push]
   autoSetupRemote = true
-  default = current
   followTags = true
 [pull]
   rebase = true
 [rebase]
   autoStash = true
-  missingCommitsCheck = warn
-[log]
-  abbrevCommit = true
+
 [branch]
   sort = -committerdate
-[tag]
-  sort = -taggerdate
-  gpgsign = true
-[credential]
-  helper = store
-[fetch]
-  prune = true
-[merge]
-  tool = nvimdiff
+
+[status]
+  showUntrackedFiles = all
 [diff]
+  tool = nvimdiff
+  algorithm = histogram
+[merge]
   tool = nvimdiff
 [mergetool]
   prompt = false
   keepBackup = false
+
+[fetch]
+  prune = true
