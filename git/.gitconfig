@@ -1,14 +1,59 @@
 [init]
-	defaultBranch = main
+  defaultBranch = main
 [user]
-	email = xhx1719@gmail.com
-	name = Harmon Hsu
+  name = Harmon Hsu
+  email = xhx1719@gmail.com
+  signingkey = ~/.ssh/id_ed25519_git.pub
+[gpg]
+  format = ssh
 [core]
-	editor = vim
-	excludesfile = /home/devcontainers/.gitignore_global
+  compression = 9
+  whitespace = blank-at-eol,space-before-tab,tab-in-indent,blank-at-eof,cr-at-eol
+  preloadindex = true
+  editor = nvim
+  ui = true
+  excludesfile = ~/.gitignore_global
+[apply]
+  whitespace = error
 [alias]
-    graph = log --all --graph --decorate --oneline
+  graph = log --all --graph \
+    --pretty=format:'%C(auto)%h%C(reset) %C(bold blue)%an%C(reset) %C(magenta)%ar%C(reset) %C(auto)%D%C(reset)%n%s%n'
+  inc = add --patch
+[status]
+  branch = true
+  showStash = true
+  showUntrackedFiles = all
+[diff]
+  context = 3
+  renames = copies
+  interHunkContext = 10
+[commit]
+  template = ~/.config/git/commitmsg.txt
+  gpgsign = true
+[push]
+  autoSetupRemote = true
+  default = current
+  followTags = true
+[pull]
+  rebase = true
+[rebase]
+  autoStash = true
+  missingCommitsCheck = warn
+[log]
+  abbrevCommit = true
+[branch]
+  sort = -committerdate
+[tag]
+  sort = -taggerdate
+  gpgsign = true
 [credential]
-	helper = store
+  helper = store
 [fetch]
-	prune = true
+  prune = true
+[merge]
+  tool = nvimdiff
+[diff]
+  tool = nvimdiff
+[mergetool]
+  prompt = false
+  keepBackup = false
