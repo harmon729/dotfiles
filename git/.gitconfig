@@ -16,6 +16,7 @@
   autocrlf = input
   excludesfile = ~/.gitignore_global
   fscache = true
+	quotepath = false
 [apply]
   whitespace = fix
 
