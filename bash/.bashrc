@@ -85,4 +85,6 @@ fi
 #     source "$BASH_MODULES_DIR/.shell_private"
 # fi
 
+eval "$(starship init bash)"
+
 [[ ! ${BLE_VERSION-} ]] || ble-attach
