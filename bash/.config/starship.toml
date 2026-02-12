@@ -6,13 +6,14 @@ ${custom.origin}\
 $directory\
 $git_branch\
 $git_status\
-$time\
 $fill\
-$lua\
-$python\
-$docker_context\
-$jobs\
 $cmd_duration\
+$jobs\
+$pixi\
+$python\
+$lua\
+$docker_context\
+$time\
 $line_break\
 [└─](bold dark_blue)\
 $character
@@ -52,6 +53,14 @@ format = '([$all_status$ahead_behind ]($style))'
 [fill]
 symbol = ' '
 
+[pixi]
+style = 'yellow'
+symbol = ' '
+detect_files = ['pixi.toml', 'pyproject.toml']
+detect_folders = []
+show_default_environment = false
+format = '[$symbol($environment )]($style)'
+
 [python]
 style = 'blue'
 symbol = ' '
@@ -87,7 +96,7 @@ symbol = '󰏗 '
 [docker_context]
 symbol = ' '
 style = 'fg:#06969A'
-format = '[$symbol]($style) $path'
+format = '[$symbol($context )]($style)'
 detect_files = ['docker-compose.yml', 'docker-compose.yaml', 'Dockerfile']
 detect_extensions = ['Dockerfile']
 
@@ -98,15 +107,15 @@ number_threshold = 1
 format = '[$symbol]($style)'
 
 [cmd_duration]
-min_time = 500
+min_time = 1000
 style = 'fg:gray'
-format = '[$duration]($style)'
+format = '[$duration]($style) '
 
 [time]
 disabled = false
 time_format = "%R"
 style = "fg:blue"
-format = '[at ](white)[ $time]($style)'
+format = '[ $time]($style)'
 
 [character]
 success_symbol = '[❯](bold fg:blue)'
