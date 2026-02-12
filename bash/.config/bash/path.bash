@@ -12,8 +12,8 @@ if [ -d "/usr/lib/wsl/lib" ]; then
   PATH="/usr/lib/wsl/lib:$PATH"
 fi
 
-if [ -d "/home/harmon/.pixi/bin" ]; then
-  PATH="/home/harmon/.pixi/bin:$PATH"
+if [ -d "$HOME/.pixi/bin" ]; then
+  PATH="$HOME/.pixi/bin:$PATH"
 fi
 
 export PATH
