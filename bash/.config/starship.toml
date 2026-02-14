@@ -58,7 +58,7 @@ style = 'yellow'
 symbol = ' '
 detect_files = ['pixi.toml', 'pyproject.toml']
 detect_folders = []
-show_default_environment = false
+show_default_environment = true
 format = '[$symbol($environment )]($style)'
 
 [python]
