@@ -10,3 +10,5 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" # This loads nvm bash_completion
 
 eval "$(pixi completion --shell bash)"
+
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv bash)"
