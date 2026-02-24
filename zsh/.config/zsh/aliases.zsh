@@ -9,6 +9,7 @@ alias q='exit'
 alias t='type -a'
 
 alias py='python3'
+alias lg='lazygit'
 
 alias shc='$EDITOR ${HOME}/.zshrc'
 alias shr='omz reload'
