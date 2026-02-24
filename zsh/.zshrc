@@ -15,8 +15,9 @@ COMPLETION_WAITING_DOTS="true"
 ZSH_CUSTOM="$HOME/.config/zsh"
 
 # Plugins
-plugins=(git nvm zoxide zsh-autosuggestions zsh-syntax-highlighting)
+plugins=(git nvm zoxide zsh-autosuggestions zsh-syntax-highlighting vi-mode)
 zstyle ':omz:plugins:nvm' lazy yes
+VI_MODE_SET_CURSOR=true
 
 # Load OMZ
 source $ZSH/oh-my-zsh.sh

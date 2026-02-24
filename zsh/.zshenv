@@ -25,6 +25,8 @@ export LC_CTYPE='en_US.UTF-8'
 
 export PAGER='less -RFX'
 
+export KEYTIMEOUT=25
+
 # Origin icon for Starship
 if [ -f /etc/wsl.conf ]; then
   export CUSTOM_ORIGIN_SYMBOL=""
