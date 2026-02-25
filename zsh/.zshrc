@@ -1,5 +1,8 @@
 # ~/.zhsrc
 
+# [begin] zsh-profiler
+# zmodload zsh/zprof
+
 # Path to your Oh My Zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
@@ -26,3 +29,6 @@ source $ZSH/oh-my-zsh.sh
 
 # Starship init
 (( $+commands[starship] )) && eval "$(starship init zsh)"
+
+# [end] Pair with `zmodload zsh/zprof`
+# zprof
