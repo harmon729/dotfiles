@@ -24,3 +24,10 @@ autoload -Uz zmv
 # Helpful aliases for zmv
 alias zcp='zmv -C'  # Copy with patterns
 alias zln='zmv -L'  # Link with patterns
+
+# Hotkey Insertions - Text Snippets
+#  examples:
+# bindkey -s '^Xgp' 'git push origin '
+# bindkey -s '^Xgs' 'git status\n'
+# bindkey -s '^Xgl' 'git log --oneline -n 10\n'
+# bindkey -s '^Xgc' 'git commit -m ""\C-b'
