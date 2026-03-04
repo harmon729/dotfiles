@@ -18,7 +18,7 @@ COMPLETION_WAITING_DOTS="true"
 ZSH_CUSTOM="$HOME/.config/zsh"
 
 # Plugins
-plugins=(git nvm zoxide zsh-autosuggestions zsh-syntax-highlighting vi-mode)
+plugins=(git nvm zoxide vi-mode vi-mode-fix zsh-autosuggestions zsh-syntax-highlighting)
 zstyle ':omz:plugins:nvm' lazy yes
 VI_MODE_SET_CURSOR=true
 
