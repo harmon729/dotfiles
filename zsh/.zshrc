@@ -9,7 +9,7 @@ export ZSH="$HOME/.oh-my-zsh"
 # OMZ config
 
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="robbyrussell"
+ZSH_THEME=""
 HYPHEN_INSENSITIVE="true"
 zstyle ':omz:update' mode auto      # update automatically without asking
 COMPLETION_WAITING_DOTS="true"
