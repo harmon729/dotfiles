@@ -20,6 +20,7 @@ ZSH_CUSTOM="$HOME/.config/zsh"
 # Plugins
 plugins=(git nvm zoxide vi-mode vi-mode-fix zsh-autosuggestions zsh-syntax-highlighting)
 zstyle ':omz:plugins:nvm' lazy yes
+zstyle ':omz:plugins:nvm' lazy-cmd nvim
 VI_MODE_SET_CURSOR=true
 
 # Load OMZ
