@@ -2,6 +2,8 @@
   name = Harmon Hsu
   email = xhx1719@gmail.com
   signingkey = ~/.ssh/id_ed25519_git.pub
+[credential]
+  helper = store
 [gpg]
   format = ssh
 [commit]
