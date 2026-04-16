@@ -31,13 +31,13 @@ return {
       -- set to true, the preview server is available to others in your network.
       -- By default, the server listens on localhost (127.0.0.1)
       -- default: false
-      vim.g.mkdp_open_to_the_world = true
+      vim.g.mkdp_open_to_the_world = false
 
       -- use custom IP to open preview page.
       -- Useful when you work in remote Vim and preview on local browser.
       -- For more details see: https://github.com/iamcco/markdown-preview.nvim/pull/9
       -- default empty
-      vim.g.mkdp_open_ip = "47.84.43.169"
+      vim.g.mkdp_open_ip = "127.0.0.1"
       -- vim.g.mkdp_host = "0.0.0.0"
 
       -- use a custom port to start server or empty for random
