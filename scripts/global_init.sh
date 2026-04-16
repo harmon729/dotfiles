@@ -265,7 +265,7 @@ main() {
   setup_sysctl
   setup_swap
 
-  apt-get update && apt-get install build-essential procps curl file git
+  apt-get update >/dev/null && apt-get install build-essential procps curl file git -y >/dev/null
 
   info "System initialization completed successfully!"
   info "Please test the connection with user: '${NEW_USER}' in a new terminal."
