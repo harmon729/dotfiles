@@ -13,6 +13,8 @@ SWAPPINESS="60"
 SWAP_SIZE="4G"
 SWAP_PATH="/swapfile"
 
+export DEBIAN_FRONTEND=noninteractive
+
 # Color Output Helpers
 info() { echo -e "\e[32m[INFO] $*\e[0m"; }
 warn() { echo -e "\e[33m[WARN] $*\e[0m"; }
@@ -265,7 +267,7 @@ main() {
   setup_sysctl
   setup_swap
 
-  apt-get update >/dev/null && apt-get install build-essential procps curl file git -y >/dev/null
+  apt-get update -q >/dev/null && apt-get install build-essential procps curl file git -q -y >/dev/null
 
   info "System initialization completed successfully!"
   info "Please test the connection with user: '${NEW_USER}' in a new terminal."
