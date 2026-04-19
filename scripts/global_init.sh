@@ -44,28 +44,31 @@ setup_user() {
     fi
   done
 
-  local sudo_conf="/etc/sudoers.d/${NEW_USER}"
-  if [[ ! -s "${sudo_conf}" ]]; then
-    echo "${NEW_USER} ALL=(ALL : ALL) NOPASSWD: ALL" | tee "${sudo_conf}" >/dev/null
-    chmod 440 "${sudo_conf}"
-    visudo -cf "${sudo_conf}" >/dev/null || error "sudoers syntax check failed"
+  local sudo_conf_g="/etc/sudoers"
+  local sudo_conf_tmp="/tmp/sudoers"
+  local src_rule_E="^%sudo[[:space:]]ALL=\(ALL:ALL\)[[:space:]]ALL"
+  local dest_rule_F="%sudo ALL=(ALL:ALL) NOPASSWD: ALL"
+  if grep -qE "${src_rule_E}" "${sudo_conf_g}"; then
+    sed -E "s/${src_rule_E}/${dest_rule_F}/" "${sudo_conf_g}" >"${sudo_conf_tmp}"
+    if visudo -cf "${sudo_conf_tmp}" >/dev/null; then
+      cat "${sudo_conf_tmp}" >"${sudo_conf_g}"
+      chmod 440 "${sudo_conf_g}"
+      visudo -cf "${sudo_conf_g}" >/dev/null || error "critical wrong with ${sudo_conf_g}, os may destroyed"
+    else
+      warn "syntax wrong with ${sudo_conf_tmp}, skip overwrite"
+    fi
+  fi
+
+  local sudo_conf_u="/etc/sudoers.d/${NEW_USER}"
+  if [[ ! -s "${sudo_conf_u}" ]]; then
+    echo "${NEW_USER} ALL=(ALL : ALL) NOPASSWD: ALL" >>"${sudo_conf_u}"
+    chmod 440 "${sudo_conf_u}"
+    visudo -cf "${sudo_conf_u}" >/dev/null || error "sudoers.d syntax check failed"
     info "sudo passwordless access configured for ${NEW_USER}"
   else
-    warn "${sudo_conf} already exists."
+    warn "${sudo_conf_u} already exists."
   fi
 }
-# if sudo visudo -cf "${sudo_conf}"; then
-#   sudo_rules=$(sudo -nl)
-#   if echo "${sudo_rules}" | grep -q "NOPASSWD: ALL"; then
-#     echo "all sudo commands set no passward"
-#   elif echo "${sudo_rules}" | grep -q "NOPASSWD"; then
-#     echo "part of sudo commands set no passward"
-#   else
-#     echo "sudo commands set passward"
-#   fi
-# else
-#   echo "Attention! Some problem with file ${sudo_conf}. Please check it!"
-# fi
 
 # =================================== #
 # 2. SSH HARDENING & PUBKEY INJECTION #
@@ -118,38 +121,6 @@ EOF
   fi
 }
 
-# set_sysctl() {
-#   local key="$1"
-#   local value="$2"
-#   local conf_file="/etc/sysctl.conf"
-#
-#   local current_value
-#   if ! current_value="$(sysctl -n "${key}" 2>&1)"; then
-#     echo "error: ${current_value}"
-#     return 1
-#   fi
-#   if [[ "${current_value}" == "${value}" ]]; then
-#     echo "current value of key is right. do nothing"
-#     return 0
-#   else
-#     sudo sed "s/${key}.*=.*${current_value}//" "${conf_file}"
-#     echo "${key} = ${value}" | sudo tee -a "${conf_file}"
-#     echo "write to ${conf_file}"
-#   fi
-#   current_value="$(sysctl -n "${key}")"
-#   if [[ "${current_value}" == "${value}" ]]; then
-#     if sudo sysctl -p; then
-#       echo "error: set failure"
-#       return 1
-#     fi
-#     echo "set successfully"
-#     return 0
-#   else
-#     echo "unexpected failure"
-#     return 1
-#   fi
-# }
-
 # ============================= #
 # 3. KERNEL TUNING (BBR & SWAP) #
 # ============================= #
@@ -177,22 +148,6 @@ setup_sysctl() {
     info "Kernel parameters optimized (BBR & Swappiness)"
   fi
 }
-
-# if [[ $(sysctl -n net.core.default_qdisc) != "fq" ]]; then
-#   sudo tee -a "/etc/sysctl.conf" <<EOF
-# net.core.default_qdisc = fq
-# EOF
-#   sudo sysctl -p
-#   echo "set net.core.default_qdisc = fq"
-# fi
-#
-# if [[ $(sysctl -n net.ipv4.tcp_congestion_control) != "bbr" ]]; then
-#   sudo tee -a "/etc/sysctl.conf" <<EOF
-# net.ipv4.tcp_congestion_control = bbr
-# EOF
-#   sudo sysctl -p
-#   echo "set net.ipv4.tcp_congestion_control = bbr"
-# fi
 
 setup_swap() {
   local swap_file="${SWAP_PATH}"
@@ -232,24 +187,6 @@ setup_swap() {
   fi
 }
 
-# if [[ -f "${SWAP_PATH}" ]]; then
-#   echo "swapfile exists"
-# else
-#   sudo fallocate -l "${SWAP_SIZE}" "${SWAP_PATH}"
-#   sudo chmod 600 "${SWAP_PATH}"
-#   sudo mkswap "${SWAP_PATH}"
-#   sudo swapon "${SWAP_PATH}"
-#   if ! grep -q "${SWAP_PATH}" /etc/fstab; then
-#     echo "${SWAP_PATH} none swap sw 0 0" | sudo tee -a /etc/fstab
-#   fi
-#   echo "swap creates successfully"
-# fi
-#
-# if [[ "$(sysctl -n vm.swappiness)" != 60 ]]; then
-#   echo "vm.swappiness = 60" | sudo tee -a "/etc/sysctl.conf"
-#   sudo sysctl -p
-# fi
-
 # ================= #
 # MAIN CONTROL FLOW #
 # ================= #
@@ -261,15 +198,12 @@ main() {
   fi
 
   info "Starting system initialization..."
-
   setup_user
   setup_ssh
   setup_sysctl
   setup_swap
-
-  apt-get update -q >/dev/null && apt-get install build-essential procps curl file git -q -y >/dev/null
-
   info "System initialization completed successfully!"
+
   info "Please test the connection with user: '${NEW_USER}' in a new terminal."
 }
 
