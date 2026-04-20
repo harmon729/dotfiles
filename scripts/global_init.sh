@@ -68,6 +68,35 @@ setup_user() {
   else
     warn "${sudo_conf_u} already exists."
   fi
+
+  local pam_auth_conf="/usr/share/pam-configs/nopasswd"
+  if [[ ! -f "${pam_auth_conf}" ]]; then
+    cat >"${pam_auth_conf}" <<EOF
+Name: Global passwordless for specified users
+Default: yes
+Priority: 1024
+Auth-Type: Primary
+Auth:
+[success=done default=ignore] pam_succeed_if.so ingroup sudo
+EOF
+    info "set sudo group passwordless"
+  else
+    warn "${pam_auth_conf} already exists, check manually!"
+  fi
+
+  local pam_rule_uF="[success=done default=ignore] pam_succeed_if.so user = ${NEW_USER}"
+  if ! grep -qF "${pam_rule_uF}" "${pam_auth_conf}"; then
+    echo "${pam_rule_uF}" >>"${pam_auth_conf}"
+    info "set user ${NEW_USER} passwordless"
+  else
+    info "user ${NEW_USER} already passwordless"
+  fi
+
+  if pam-auth-update --package; then
+    info "pam-auth update successfully"
+  else
+    warn "pam-auth update fail, check manually"
+  fi
 }
 
 # =================================== #
