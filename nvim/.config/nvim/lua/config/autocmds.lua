@@ -7,14 +7,26 @@
 -- Or remove existing autocmds by their group name (which is prefixed with `lazyvim_` for the defaults)
 -- e.g. vim.api.nvim_del_augroup_by_name("lazyvim_wrap_spell")
 
-local buffer_sync = require("custom.YankPost")
-
-vim.api.nvim_create_augroup("YankBufferPost", { clear = true })
+local function augroup(name)
+  return vim.api.nvim_create_augroup(name, { clear = true })
+end
 
 vim.api.nvim_create_autocmd({ "TextYankPost" }, {
-  group = "YankBufferPost",
-  callback = function(_)
-    -- 延时执行：确保 Tmux 缓冲区已更新
-    vim.defer_fn(buffer_sync.sync_to_file, 50)
+  group = augroup("sync_yank"),
+  callback = function()
+    local data = vim.v.event.regcontents
+    if vim.env.TMUX == nil then
+      require("vim.ui.clipboard.osc52").copy("+")(data)
+    end
+    if type(data) == "table" then
+      data = table.concat(data, "\n")
+    end
+
+    local buffer_path = vim.fn.expand("~/clip.buf")
+    local buffer = io.open(buffer_path, "w")
+    if buffer then
+      buffer:write(data)
+      buffer:close()
+    end
   end,
 })
