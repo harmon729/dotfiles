@@ -10,7 +10,8 @@ error() {
   exit 1
 }
 
-sudo apt-get update && sudo apt-get install -y -- zsh curl stow fzf
+sudo apt-get update && sudo apt-get install -y -- zsh curl stow
+brew install fzf starship
 
 DOTFILES="${HOME}/dotfiles"
 if [[ ! -d "${DOTFILES}" ]]; then
@@ -27,7 +28,6 @@ stow --adopt -d "${DOTFILES}" -t "${HOME}" -- "zsh" "starship"
 
 info "solve probably problem"
 
-mkdir -p "${HOME}/.config"
 stow -d "${DOTFILES}" -t "${HOME}" -- "zsh" "starship"
 
 info "install zsh successfully"
@@ -38,13 +38,6 @@ fi
 
 info "omz installed"
 
-# ZSH_CUSTOM="${HOME}/.config/zsh/plugins/"
-# if [[ ! -d "${ZSH_CUSTOM}/plugins/zsh-autosuggestions" ]]; then
-#   git clone https://github.com/zsh-users/zsh-autosuggestions "${CUSTOM_PLUG}/zsh-autosuggestions"
-# fi
-# if [[ ! -d "${CUSTOM_PLUG}/plugins/zsh-syntax-highlighting" ]]; then
-#   git clone https://github.com/zsh-users/zsh-syntax-highlighting.git "${CUSTOM_PLUG}/zsh-syntax-highlighting"
-# fi
 if ! command -v zoxide; then
   curl -sSfL https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | sh
 fi
