@@ -48,15 +48,19 @@ setup_user() {
   local sudo_conf_tmp="/tmp/sudoers"
   local src_rule_E="^%sudo[[:space:]]ALL=\(ALL:ALL\)[[:space:]]ALL"
   local dest_rule_F="%sudo ALL=(ALL:ALL) NOPASSWD: ALL"
-  if grep -qE "${src_rule_E}" "${sudo_conf_g}"; then
-    sed -E "s/${src_rule_E}/${dest_rule_F}/" "${sudo_conf_g}" >"${sudo_conf_tmp}"
-    if visudo -cf "${sudo_conf_tmp}" >/dev/null; then
-      cat "${sudo_conf_tmp}" >"${sudo_conf_g}"
-      chmod 440 "${sudo_conf_g}"
-      visudo -cf "${sudo_conf_g}" >/dev/null || error "critical wrong with ${sudo_conf_g}, os may destroyed"
-    else
-      warn "syntax wrong with ${sudo_conf_tmp}, skip overwrite"
+  if [[ -s "${sudo_conf_g}" ]]; then
+    if grep -qE "${src_rule_E}" "${sudo_conf_g}"; then
+      sed -E "s/${src_rule_E}/${dest_rule_F}/" "${sudo_conf_g}" >"${sudo_conf_tmp}"
+      if visudo -cf "${sudo_conf_tmp}" >/dev/null; then
+        cat "${sudo_conf_tmp}" >"${sudo_conf_g}"
+        chmod 440 "${sudo_conf_g}"
+        visudo -cf "${sudo_conf_g}" >/dev/null || error "critical wrong with ${sudo_conf_g}, os may destroyed"
+      else
+        warn "syntax wrong with ${sudo_conf_tmp}, skip overwrite"
+      fi
     fi
+  else
+    warn "${sudo_conf_g} not found!"
   fi
 
   local sudo_conf_u="/etc/sudoers.d/${NEW_USER}"
