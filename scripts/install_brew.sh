@@ -1,8 +1,10 @@
 #!/usr/bin/env bash
 
-info "installing essential utilazations..."
-sudo apt-get update -q &&
-  sudo apt-get install build-essential procps curl file git -q -y &&
-  info "utilazations install successfully"
+sudo apt-get update
+sudo apt-get install -y -- build-essential procps curl file git
 
 NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+if ! command -v brew; then
+  echo "export PATH=\"/home/linuxbrew/.linuxbrew/bin\":\"\$PATH\""
+fi
