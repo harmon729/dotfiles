@@ -3,6 +3,9 @@
 # Pixi
 eval "$(pixi completion --shell zsh)"
 
+# fzf
+source <(fzf --zsh)
+
 # Vim
 bindkey -M viins 'jk' vi-cmd-mode
 
