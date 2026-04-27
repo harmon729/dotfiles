@@ -12,7 +12,7 @@ error() {
 
 sudo apt-get update
 sudo apt-get install -y software-properties-common stow
-sudo add-apt-repository ppa:git-core/ppa
+sudo add-apt-repository -y ppa:git-core/ppa
 sudo apt-get install -y git
 
 DOTFILES="${HOME}/dotfiles"
