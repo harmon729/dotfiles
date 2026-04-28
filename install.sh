@@ -14,7 +14,7 @@ if ! command -v brew; then
   export PATH="/home/linuxbrew/.linuxbrew/bin":"$PATH"
 fi
 
-if ! command -v brew; then
+if ! command -v pixi; then
   export PATH="${HOME}/.pixi/bin":"$PATH"
 fi
 
