@@ -30,6 +30,10 @@ export KEYTIMEOUT=25
 # Origin icon for Starship
 if [ -f /etc/wsl.conf ]; then
   export CUSTOM_ORIGIN_SYMBOL=""
+  WINDOWS_IP=$(ip route | grep default | awk '{print $3}')
+  PROXY_HTTP="http://${WINDOWS_IP}:7897"
+  export http_proxy="${PROXY_HTTP}"
+  export https_proxy="${PROXY_HTTP}"
 elif [ -n "$SSH_CLIENT" ]; then
   export CUSTOM_ORIGIN_SYMBOL=""
 else
