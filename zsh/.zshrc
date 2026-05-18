@@ -18,7 +18,7 @@ COMPLETION_WAITING_DOTS="true"
 ZSH_CUSTOM="$HOME/.config/zsh"
 
 # Plugins
-plugins=(git zoxide vi-mode vi-mode-fix zsh-autosuggestions zsh-syntax-highlighting)
+plugins=(git zoxide direnv vi-mode vi-mode-fix zsh-autosuggestions zsh-syntax-highlighting)
 VI_MODE_SET_CURSOR=true
 
 # Load OMZ
