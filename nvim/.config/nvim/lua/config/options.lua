@@ -5,3 +5,5 @@
 vim.opt.clipboard = "unnamedplus"
 
 vim.opt.fileencodings = { "ucs-bom", "utf-8", "gbk", "big5", "gb18030", "latin1" }
+
+vim.g.lazyvim_python_lsp = "basedpyright"
