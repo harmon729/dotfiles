@@ -1,1 +1,41 @@
+# Local customization files (may contain personal/sensitive data)
 .bashrc_local
+.bash_local*
+.shell_local*
+.shell_private
+*_local
+*.local
+
+# Git credentials (never commit these)
+.git-credentials
+.gitconfig.local
+
+# Vim local configurations
+.vimrc_local
+
+# SSH keys and credentials
+id_rsa
+id_dsa
+id_ecdsa
+id_ed25519
+*.pem
+*.key
+
+# Environment files with secrets
+.env
+.env.local
+.env.*.local
+
+# Backup files that might contain sensitive data
+*.backup
+*.bak
+*~
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Temporary files
+*.swp
+*.swo
+*~
