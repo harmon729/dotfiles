@@ -31,7 +31,8 @@ info "solve probably problem"
 stow -d "${DOTFILES}" -t "${HOME}" -- nvim
 
 if [[ ! -d "${HOME}/.tmux/plugins/tpm" ]]; then
-  git clone "https://github.com/tmux-plugins/tpm" "${HOME}/.tmux/plugins/tpm"
+  git clone "https://github.com/tmux-plugins/tpm" "${HOME}/.tmux/plugins/tpm" &&
+    ~/.tmux/plugins/tpm/bin/install_plugins
 fi
 
 info "install tmux successfully"
