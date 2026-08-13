@@ -15,7 +15,7 @@ sudo apt-get install -y -- git stow
 
 pixi global install python=3.12 nodejs=24
 
-brew install neovim ripgrep fd lazygit tree-sitter-cli
+brew install neovim ripgrep fd lazygit tree-sitter-cli direnv
 
 DOTFILES="${HOME}/dotfiles"
 if [[ ! -d "${DOTFILES}" ]]; then
