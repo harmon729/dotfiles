@@ -35,6 +35,10 @@ setup_user() {
     info "successfully created user ${NEW_USER}"
   fi
 
+  if ! command -p sudo &>/dev/null; then
+    apt-get update && apt-get install -y sudo
+  fi
+
   for g in "${REQUIRED_GROUPS[@]}"; do
     if getent group "$g" &>/dev/null; then
       if ! id -nG "${NEW_USER}" | grep -qw "$g"; then
