@@ -18,6 +18,7 @@ path=(
 
 # Make nvim the default editor.
 export EDITOR='nvim'
+export SUDO_EDITOR='/home/linuxbrew/.linuxbrew/bin/nvim'
 
 # Prefer US English and use UTF-8.
 export LANG='en_US.UTF-8'
