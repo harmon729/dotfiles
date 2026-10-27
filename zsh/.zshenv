@@ -16,6 +16,8 @@ path=(
   "/usr/lib/wsl/lib"(N)
 )
 
+export TERMINFO_DIRS="/home/linuxbrew/.linuxbrew/opt/ncurses/share/terminfo:"
+
 # Make nvim the default editor.
 export EDITOR='nvim'
 export SUDO_EDITOR='/home/linuxbrew/.linuxbrew/bin/nvim'
